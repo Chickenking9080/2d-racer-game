@@ -14,3 +14,4 @@ A top-down car racing prototype game built in Godot. This project features custo
 * **Lap System (In-Progress):** The backend logic for checkpoints and lap counting is integrated it just isn't used due to time restrictions such as current school assignments.
 
 ## Screenshot
+![2D Racer Game Screenshot](Screenshot_20260312_122722.webp)
