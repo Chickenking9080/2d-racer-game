@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://b5bici484ryhl"]
+
+[ext_resource type="Script" uid="uid://ducacjpk3ijm" path="res://scripts/car_controller.gd" id="1_uoj53"]
+[ext_resource type="Texture2D" uid="uid://dc1im77s72x5j" path="res://Resources/Spritesheets/green_car.png" id="2_k61xc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06lh1"]
+atlas = ExtResource("2_k61xc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td361"]
+atlas = ExtResource("2_k61xc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72krn"]
+atlas = ExtResource("2_k61xc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0hk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06lh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td361")
+}],
+"loop": true,
+"name": &"steerleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72krn")
+}],
+"loop": true,
+"name": &"steerright",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjudg"]
+size = Vector2(24, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uoj53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k61xc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06lh1"]
+
+[node name="Node2D" type="Node2D" unique_id=62111102]
+rotation = -1.5707964
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1845686640]
+script = ExtResource("1_uoj53")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=206741520]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_v0hk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=994621466]
+shape = SubResource("RectangleShape2D_mjudg")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1078309004]
+zoom = Vector2(3.09, 3.09)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1909924027]
+
+[node name="SkidSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=363463934]
+
+[node name="BrakeSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=324494487]
+
+[node name="Tyres" type="Node2D" parent="CharacterBody2D" unique_id=77297712]
+
+[node name="fr" type="Node2D" parent="CharacterBody2D/Tyres" unique_id=647054384]
+position = Vector2(10.000001, -11)
+
+[node name="fl" type="Node2D" parent="CharacterBody2D/Tyres" unique_id=851713502]
+position = Vector2(9.999999, 11)
+
+[node name="rr" type="Node2D" parent="CharacterBody2D/Tyres" unique_id=17015968]
+position = Vector2(-9.999999, -11)
+
+[node name="rl" type="Node2D" parent="CharacterBody2D/Tyres" unique_id=2110112342]
+position = Vector2(-10.000001, 11)
+
+[node name="TyremarkContainer" type="Node2D" parent="CharacterBody2D" unique_id=1911859569]
+
+[node name="asphaltraycast" type="Area2D" parent="CharacterBody2D" unique_id=1809958000]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/asphaltraycast" unique_id=1256319937]
+shape = SubResource("RectangleShape2D_uoj53")
+
+[node name="dirtraycast" type="Area2D" parent="CharacterBody2D" unique_id=1710935664]
+collision_layer = 1073741824
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/dirtraycast" unique_id=1771532998]
+shape = SubResource("RectangleShape2D_k61xc")
+
+[node name="waterraycast" type="Area2D" parent="CharacterBody2D" unique_id=1337391070]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/waterraycast" unique_id=1867612900]
+shape = SubResource("RectangleShape2D_06lh1")
