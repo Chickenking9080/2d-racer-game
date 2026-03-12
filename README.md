@@ -1,1 +1,1 @@
-Simple Game In Godot, open the link in description to play
+Simple Game In Godot, open the link in description to play I used a mix of new code and old code from an old project i did to create this. It is made to support a lap system but nothings set up, I created the sprites in Piskel
